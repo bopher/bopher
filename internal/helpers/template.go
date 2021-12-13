@@ -29,13 +29,12 @@ func CompileTemplate(filePath string, maps ...TemplateData) error {
 	}
 
 	// Read file
-	replacer := strings.NewReplacer("__anonymous__", data["namespace"].(string), "__goapp__", data["name"].(string))
 	bytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		return err
 	}
 	content := string(bytes)
-	content = replacer.Replace(content)
+	content = setNamespace(content, data["namespace"].(string), data["name"].(string))
 	dest := strings.ReplaceAll(filePath, ".tpl.", ".")
 
 	out, err := os.OpenFile(dest, os.O_CREATE|os.O_WRONLY, 0644)
@@ -53,4 +52,12 @@ func CompileTemplate(filePath string, maps ...TemplateData) error {
 		return err
 	}
 	return nil
+}
+
+func setNamespace(code, namemspace, name string) string {
+	res := code
+	replacer := strings.NewReplacer("mekramy/__boiler", namemspace+"/__boiler")
+	res = replacer.Replace(res)
+	replacer = strings.NewReplacer("/__boiler", "/"+name)
+	return replacer.Replace(res)
 }

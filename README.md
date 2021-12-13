@@ -26,6 +26,6 @@ For accessing app dependencies (config driver, cache driver, etc.) you must use 
 
 ```go
 // github.com/myapp is your app namespace
-import "github.com/myapp/src/appp"
+import "github.com/myapp/src/app"
 app.Config()
 ```

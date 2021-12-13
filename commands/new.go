@@ -30,7 +30,7 @@ func init() {
 		// download and extract template
 		func(basePath string) {
 			dest := basePath + "/bopher.zip"
-			helpers.Handle(helpers.Download("https://github.com/bopher/boilerplate/archive/master.zip", dest))
+			helpers.Handle(helpers.Download("https://github.com/bopher/boilerplate/archive/latest.zip", dest))
 			helpers.Handle(helpers.Unzip(dest, path.Join("./", name)))
 			helpers.Handle(os.Remove(dest))
 		}(root)

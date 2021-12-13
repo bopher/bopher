@@ -22,11 +22,11 @@ func Unzip(src string, dest string) error {
 	for _, f := range r.File {
 
 		// Store filename/path for returning and using later on
-		if f.Name == "boilerplate-master/" {
+		if f.Name == "boilerplate-latest/" {
 			continue
 		}
 
-		fpath := filepath.Join(dest, strings.Replace(f.Name, "boilerplate-master/", "", 1))
+		fpath := filepath.Join(dest, strings.Replace(f.Name, "boilerplate-latest/", "", 1))
 
 		// Check for ZipSlip. More Info: http://bit.ly/2MsjAWE
 		if !strings.HasPrefix(fpath, filepath.Clean(dest)+string(os.PathSeparator)) {
