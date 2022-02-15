@@ -37,14 +37,20 @@ func setup(name string, w *questions.Wizard) {
 	// Clean and compile
 	helpers.Handle(helpers.CompileTemplate(pathResolver("go.mod"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("main.tpl.go"), data))
-	helpers.Handle(os.Rename(pathResolver(".gitignore.tpl"), pathResolver(".gitignore")))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/boot.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/cache.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/config.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/crypto.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/logger.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/translator.tpl.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/utils.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/validator.tpl.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/commands/clear.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/commands/down.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/commands/hash.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/commands/up.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/commands/version.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("src/config/strings.go"), data))
 
 	// config
 	switch w.Result("config") {
