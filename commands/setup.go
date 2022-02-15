@@ -88,5 +88,6 @@ func setup(name string, w *questions.Wizard) {
 		helpers.Handle(helpers.CompileTemplate(pathResolver("src/commands/serve.tpl.go"), data))
 		helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/web.tpl.go"), data))
 		helpers.Handle(helpers.CompileTemplate(pathResolver("src/http/routes.tpl.go"), data))
+		helpers.Handle(helpers.CompileTemplate(pathResolver("src/http/errors.tpl.go"), data))
 	}
 }
