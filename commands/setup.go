@@ -37,6 +37,8 @@ func setup(name string, w *questions.Wizard) {
 	// Clean and compile
 	helpers.Handle(helpers.CompileTemplate(pathResolver("go.mod"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("main.tpl.go"), data))
+	helpers.Handle(helpers.CompileTemplate(pathResolver("app.tpl.service"), data))
+	helpers.Handle(os.Rename(pathResolver("app.tpl.service"), pathResolver(name+".service")))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/boot.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/cache.tpl.go"), data))
 	helpers.Handle(helpers.CompileTemplate(pathResolver("src/app/config.tpl.go"), data))
