@@ -9,7 +9,7 @@ import (
 )
 
 // TemplateData structure
-type TemplateData map[string]interface{}
+type TemplateData map[string]any
 
 // CompileTemplate compile template file
 func CompileTemplate(filePath string, maps ...TemplateData) error {
